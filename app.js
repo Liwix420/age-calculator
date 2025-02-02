@@ -9,6 +9,7 @@ let dateValues = {day: [0, false], month: [0, false], year: [0, false]};
 function Validate(el, type) {
     /* el == input */
     let isValid = 0;
+    const today = new Date();
     switch (type) {
         case 'day':
             const month = dateValues['month'][0];
@@ -21,11 +22,24 @@ function Validate(el, type) {
             };
 
             // Sprawdzamy rok przestępny
-            if ((year % 4 === 0 && year % 100 !== 0) || (year % 400 === 0)) {
-                daysInMonth[2] = 29;
+            if (year!==0) {
+                if ((year % 4 === 0 && year % 100 !== 0) || (year % 400 === 0)) {
+                    daysInMonth[2] = 29;
+                }
             }
-
-            isValid = el > 0 && el <= daysInMonth[month];
+            
+            if (year === today.getFullYear() && month === today.getMonth()) {
+                isValid = el > 0 && el <= today.getDay();
+            }
+            else {
+                if (month === 0) {
+                    isValid = true;
+                }
+                else {
+                    isValid = el > 0 && el <= daysInMonth[month];
+                }
+                
+            }
             console.log(daysInMonth[month]);
             if (!isValid) {
                 Day.classList.add('error');
@@ -37,7 +51,13 @@ function Validate(el, type) {
             return isValid;
         case 'month':
             Validate(dateValues['day'][0], 'day');
-            isValid = (el > 0 && el <= 12);
+            if (dateValues['year'][0] === today.getFullYear()) {
+                isValid = (el > 0 && el <= today.getMonth());
+            }
+            else {
+                isValid = (el > 0 && el <= 12);
+            }
+    
             if (!isValid) {
                 Month.classList.add('error');
                 Month.querySelector('p').innerText = 'Must be a valid Month';
