@@ -36,6 +36,7 @@ function Validate(el, type) {
             }
             return isValid;
         case 'month':
+            Validate(dateValues['day'][0], 'day');
             isValid = (el > 0 && el <= 12);
             if (!isValid) {
                 Month.classList.add('error');
@@ -46,6 +47,7 @@ function Validate(el, type) {
             }
             return isValid;
         case 'year':
+            Validate(dateValues['month'][0], 'month');
             isValid = (el > 0 && el <= 2025);
             if (!isValid) {
                 Year.classList.add('error');
