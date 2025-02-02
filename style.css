@@ -1,0 +1,119 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    height: 100vh;
+    width: 100vw;
+    overflow: hidden;
+    font-family: "Poppins", serif;
+    font-weight: 700;
+    color: hsl(0, 0%, 8%);
+}
+
+main {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+section {
+    background-color: white;
+    height: 600px;
+    width: 900px;
+    position: relative;
+}
+
+.forms {
+    height: 20%;
+    display: flex;
+    margin-bottom: 50px;
+}
+
+.forms form {
+    width: 20%;
+    display: flex;
+    flex-direction: column;
+    margin-right: 25px;
+}
+
+.forms form label {
+    text-transform: uppercase;
+    color: hsl(0, 1%, 44%);
+    letter-spacing: 3px;
+    margin-bottom: 10px;
+}
+
+.forms form input {
+    height: 50%;
+    width: 100%;
+    border-radius: 10px;
+    border: 1px solid hsl(0, 0%, 81%);
+    padding: 25px;
+    font-family: "Poppins", serif;
+    font-weight: 700;
+    font-size: 30px;
+}
+
+.forms form p {
+    visibility: hidden;
+}
+
+.forms form input:focus {
+    border: 1px solid hsl(259, 100%, 65%);
+    outline: none;
+}
+
+.forms form.error label {
+    color: hsl(0, 100%, 57%)
+}
+
+.forms form.error input {
+    border-color: hsl(0, 100%, 57%)
+}
+
+.forms form.error p {
+    font-weight: 400;
+    visibility: visible;
+    color: hsl(0, 100%, 57%);
+}
+
+svg {
+    height: 80px;
+    width: 80px;
+    border-radius: 100%;
+    padding: 20px;
+    background-color: hsl(259, 100%, 65%);
+    position: absolute;
+    right: 150px;
+    top: 100px;
+    transition: 0.2s cubic-bezier(0.165, 0.84, 0.8, 1);
+}
+
+svg:hover{
+    background-color: hsl(0, 0%, 8%);
+    cursor: pointer;
+    transform: scale(1.1);
+    
+}
+
+svg:active{
+    background-color: hsl(0, 0%, 100%);
+    color:hsl(0, 0%, 8%);
+}
+
+.calculator {
+    display: flex;
+    flex-direction: column;
+    font-size: 60px;
+    font-style: italic;
+}
+
+.calculator span {
+    color:hsl(259, 100%, 65%);
+    letter-spacing: 15px;
+}
